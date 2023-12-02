@@ -8,6 +8,7 @@ GOTEST=$(GOCMD) test
 
 # Binary name
 GRAPH_BINARY_NAME=graph
+LRU_BINARY_NAME=lru
 
 # Build directives
 all: build
@@ -29,4 +30,7 @@ clean:
 graph:
 	go build -o $(GRAPH_BINARY_NAME) ./cmd/graph
 
+.PHONY: lru
+lru:
+	go build -o $(LRU_BINARY_NAME) ./cmd/lru
 
