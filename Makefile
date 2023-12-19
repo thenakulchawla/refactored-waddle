@@ -6,9 +6,7 @@ GOBUILD=$(GOCMD) build
 GOCLEAN=$(GOCMD) clean
 GOTEST=$(GOCMD) test
 
-# Binary name
-GRAPH_BINARY_NAME=graph
-LRU_BINARY_NAME=lru
+RW_BINARY_NAME="rw"
 
 # Build directives
 all: build
@@ -25,12 +23,8 @@ clean:
 	$(GOCLEAN)
 	rm -f $(GRAPH_BINARY_NAME)
 
-# Build directive for the graph application
-.PHONY: graph
-graph:
-	go build -o $(GRAPH_BINARY_NAME) ./cmd/graph
 
-.PHONY: lru
-lru:
-	go build -o $(LRU_BINARY_NAME) ./cmd/lru
+.PHONY: rw
+rw:
+	$(GOBUILD) -o $(RW_BINARY_NAME) ./main.go
 
