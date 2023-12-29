@@ -5,7 +5,7 @@ package cmd
 
 import (
 	"github.com/spf13/cobra"
-	arrange "github.com/thenakulchawla/refactored-waddle/pkg/arrays"
+	"github.com/thenakulchawla/refactored-waddle/pkg/arrays"
 )
 
 // arraysCmd represents the arrays command
@@ -19,8 +19,8 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		funcName := "moveZeroes"
-		arrange.RunArrFunc(funcName)
+		// change this to test the function you want to run
+		arrays.LongCons()
 	},
 }
 
