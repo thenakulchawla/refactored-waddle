@@ -13,11 +13,11 @@ func CombinationSum() {
 func combinationSum(candidates []int, target int) [][]int {
 
 	var result [][]int
-	backtrack(target, make([]int, 0), 0, candidates, &result)
+	backtrackCS(target, make([]int, 0), 0, candidates, &result)
 	return result
 }
 
-func backtrack(remain int, comb []int, start int, candidates []int, res *[][]int) {
+func backtrackCS(remain int, comb []int, start int, candidates []int, res *[][]int) {
 
 	if remain == 0 {
 		copyComb := make([]int, len(comb))
@@ -29,8 +29,45 @@ func backtrack(remain int, comb []int, start int, candidates []int, res *[][]int
 
 	for i := start; i < len(candidates); i++ {
 		comb = append(comb, candidates[i])
-		backtrack(remain-candidates[i], comb, i, candidates, res)
+		backtrackCS(remain-candidates[i], comb, i, candidates, res)
 		comb = comb[:len(comb)-1]
+	}
+
+}
+
+func GenParenthesis() {
+	n := 3
+	res := generateParenthesis(n)
+	fmt.Println(res)
+}
+
+func generateParenthesis(n int) []string {
+	var res []string
+	backtrackGP(&res, n, 0, 0, "")
+	return res
+}
+
+func backtrackGP(res *[]string, n, open, close int, currSequence string) {
+
+	if open == close && close == n {
+		*res = append(*res, currSequence)
+		return
+	}
+
+	if open < n {
+		currSequence += "("
+		open++
+		backtrackGP(res, n, open, close, currSequence)
+		open--
+		currSequence = currSequence[:len(currSequence)-1]
+	}
+
+	if close < open {
+		currSequence += ")"
+		close++
+		backtrackGP(res, n, open, close, currSequence)
+		close--
+		currSequence = currSequence[:len(currSequence)-1]
 	}
 
 }

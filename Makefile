@@ -28,3 +28,6 @@ clean:
 rw:
 	$(GOBUILD) -o $(RW_BINARY_NAME) ./main.go
 
+.PHONY: test
+test:
+	$(GOTEST) ./...
